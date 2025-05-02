@@ -1,13 +1,71 @@
-<!doctype html>
+<!-- index.html -->
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>STAR: College Companion</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="login-screen" id="login-screen">
+    <img src="star.png" alt="STAR Logo" class="logo large-logo">
+    <h1>Welcome to STAR </h1>
+    <input type="text" id="login-username" placeholder="Username">
+    <input type="password" id="login-password" placeholder="Password">
+    <button onclick="startOnboarding()">Start Session</button>
+  </div>
+
+  <div class="onboarding-screen" id="onboarding-screen">
+    <h2>🎓 Smart Onboarding Wizard</h2>
+    <label>What course are you taking?</label>
+    <input type="text" id="course-input" placeholder="e.g., Intro to Psychology">
+
+    <label>Your learning style:</label>
+    <select id="learning-style">
+      <option value="visual">Visual</option>
+      <option value="reading">Reading/Writing</option>
+      <option value="kinesthetic">Kinesthetic</option>
+    </select>
+
+    <label>What kind of opportunities are you looking for?</label>
+    <input type="text" id="interest-input" placeholder="e.g., Internships, Events">
+
+    <label>How many hours per week can you study?</label>
+    <input type="number" id="hours-input" placeholder="e.g., 10">
+
+    <button onclick="finishOnboarding()">Continue</button>
+  </div>
+
+  <div class="app" id="app" style="display: none;">
+    <div class="sidebar">
+      <img src="star.png" alt="Star Logo" class="logo">
+      <nav>
+        <ul>
+          <li id="nav-onboarding">Lesson Plan</li>
+          <li id="nav-opportunities">Opportunities</li>
+          <li id="nav-tasks">Tasks</li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="main">
+      <section id="onboarding" class="active">
+        <h2>📘 Your Lesson Plan</h2>
+        <button onclick="generatePlan()">Regenerate Plan</button>
+        <div id="plan-output"></div>
+      </section>
+
+      <section id="opportunities">
+        <h2>🌐 Opportunities</h2>
+        <div id="opportunity-list"></div>
+      </section>
+
+      <section id="tasks">
+        <h2>🗓️ Tasks</h2>
+        <ul id="task-list"></ul>
+      </section>
+    </div>
+  </div>
+</body>
 </html>
